@@ -3,8 +3,15 @@ import javax.swing.JComponent;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 public class Camera extends JComponent {
+
+    ArrayList<Object> gameObjects;
+
+    public Camera() {
+        gameObjects = new ArrayList<>();
+    }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -19,17 +26,27 @@ public class Camera extends JComponent {
 
     public void renderScene(Graphics2D g2d) {
 
+        // Setting backdrop of the Camera
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0, 0, getWidth(), getHeight());
-        g2d.setColor(Color.CYAN);
-        new Vector(500, 500).draw(g2d);
-        new Vector(540, 360).draw(g2d);
 
-        g2d.setColor(Color.GREEN);
-        new LineSegment(100, 200, 500, 600).draw(g2d);
+        // Rendering Game Objects
+        for (Object gameObject : gameObjects) {
 
-        g2d.setColor(Color.RED);
-        g2d.drawOval(600, 100, 400, 400);
+            if (gameObject instanceof Vector) {
+
+                ((Vector) gameObject).draw(g2d);
+
+            } else if (gameObject instanceof LineSegment) {
+
+                ArrayList<Vector> pointsArray = ((LineSegment) gameObject).returnPointsArray();
+                for (Vector p : pointsArray) {
+                    p.draw(g2d);
+                }
+
+            }
+
+        }
 
     }
 

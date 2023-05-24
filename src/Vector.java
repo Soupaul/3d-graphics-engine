@@ -2,10 +2,12 @@
 // Hence no separate implementation for Point has been done.
 
 import java.awt.Graphics2D;
+import java.awt.Color;
 
 public class Vector {
 
     public int[] coords; // Faster access for arrays than normal integers
+    public Color color; // Required when treating as a point
 
     // For 2D purposes
     public Vector(int x, int y) {
@@ -14,6 +16,17 @@ public class Vector {
         coords[0] = x;
         coords[1] = y;
         coords[2] = 0;
+        color = Color.WHITE;
+
+    }
+
+    public Vector(int x, int y, Color color) {
+
+        coords = new int[3];
+        coords[0] = x;
+        coords[1] = y;
+        coords[2] = 0;
+        this.color = color;
 
     }
 
@@ -23,12 +36,31 @@ public class Vector {
         coords[0] = x;
         coords[1] = y;
         coords[2] = z;
+        color = Color.WHITE;
+
+    }
+
+    public Vector(int x, int y, int z, Color color) {
+
+        coords = new int[3];
+        coords[0] = x;
+        coords[1] = y;
+        coords[2] = z;
+        this.color = color;
 
     }
 
     public Vector(int[] arr) {
 
         coords = arr;
+        color = Color.WHITE;
+
+    }
+
+    public Vector(int[] arr, Color color) {
+
+        coords = arr;
+        this.color = color;
 
     }
 
@@ -38,6 +70,7 @@ public class Vector {
         coords[0] = v.coords[0];
         coords[1] = v.coords[1];
         coords[2] = v.coords[2];
+        color = v.color;
 
     }
 
@@ -105,6 +138,7 @@ public class Vector {
     // Helper function to draw pixels. Note that this is not the most optimal way
     public void draw(Graphics2D g2d) {
 
+        g2d.setColor(color);
         g2d.drawLine(coords[0], coords[1], coords[0], coords[1]);
 
     }
