@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        camera = new Camera();
+        camera = new Camera(100, 80, 980, 640);
 
         JFrame frame = new JFrame();
         frame.setResizable(false);
