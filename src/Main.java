@@ -26,7 +26,9 @@ public class Main {
         // Adding Game Objects to Camera scene
         camera.gameObjects.add(new Vector(500, 500, Color.CYAN));
         camera.gameObjects.add(new Vector(540, 360, Color.CYAN));
+
         camera.gameObjects.add(new LineSegment(100, 200, 500, 600, Color.GREEN));
+
         ArrayList<Vector> triangle = new ArrayList<>();
         triangle.add(new Vector(700, 300));
         triangle.add(new Vector(850, 230));
@@ -39,6 +41,8 @@ public class Main {
         quad.add(new Vector(562, 444));
         quad.add(new Vector(159, 677));
         camera.gameObjects.add(new Polygon(quad, Color.RED));
+
+        camera.gameObjects.add(new Circle(new Vector(800, 300), 200, Color.YELLOW));
 
         // End time
         long end = System.nanoTime();

@@ -3,16 +3,16 @@ import java.awt.Color;
 
 public class Polygon {
 
-    public ArrayList<Vector> points;
+    public ArrayList<Vector> vertices;
     public Color color;
 
-    public Polygon(ArrayList<Vector> points) {
-        this.points = points;
+    public Polygon(ArrayList<Vector> vertices) {
+        this.vertices = vertices;
         this.color = Color.WHITE;
     }
 
-    public Polygon(ArrayList<Vector> points, Color color) {
-        this.points = points;
+    public Polygon(ArrayList<Vector> vertices, Color color) {
+        this.vertices = vertices;
         this.color = color;
     }
 
@@ -20,16 +20,16 @@ public class Polygon {
 
         ArrayList<Vector> pts = new ArrayList<>();
 
-        for (int i = 0; i < points.size(); i++) {
+        for (int i = 0; i < vertices.size(); i++) {
 
-            if (i != points.size() - 1) {
+            if (i != vertices.size() - 1) {
 
-                LineSegment ls = new LineSegment(points.get(i), points.get(i + 1), color);
+                LineSegment ls = new LineSegment(vertices.get(i), vertices.get(i + 1), color);
                 pts.addAll(ls.returnPointsArray());
 
             } else {
 
-                LineSegment ls = new LineSegment(points.get(i), points.get(0), color);
+                LineSegment ls = new LineSegment(vertices.get(i), vertices.get(0), color);
                 pts.addAll(ls.returnPointsArray());
 
             }

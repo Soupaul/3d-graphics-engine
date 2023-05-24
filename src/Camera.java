@@ -44,6 +44,13 @@ public class Camera extends JComponent {
                     p.draw(g2d);
                 }
 
+            } else if (gameObject instanceof Circle) {
+
+                ArrayList<Vector> pointsArray = ((Circle) gameObject).returnPointsArray();
+                for (Vector p : pointsArray) {
+                    p.draw(g2d);
+                }
+
             } else if (gameObject instanceof Polygon) {
 
                 ArrayList<Vector> pointsArray = ((Polygon) gameObject).returnPointsArray();
