@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -26,7 +27,18 @@ public class Main {
         camera.gameObjects.add(new Vector(500, 500, Color.CYAN));
         camera.gameObjects.add(new Vector(540, 360, Color.CYAN));
         camera.gameObjects.add(new LineSegment(100, 200, 500, 600, Color.GREEN));
-        camera.gameObjects.add(new LineSegment(700, 500, 900, 300, Color.RED));
+        ArrayList<Vector> triangle = new ArrayList<>();
+        triangle.add(new Vector(700, 300));
+        triangle.add(new Vector(850, 230));
+        triangle.add(new Vector(630, 490));
+        camera.gameObjects.add(new Polygon(triangle, Color.BLUE));
+
+        ArrayList<Vector> quad = new ArrayList<>();
+        quad.add(new Vector(100, 300));
+        quad.add(new Vector(368, 244));
+        quad.add(new Vector(562, 444));
+        quad.add(new Vector(159, 677));
+        camera.gameObjects.add(new Polygon(quad, Color.RED));
 
         // End time
         long end = System.nanoTime();
